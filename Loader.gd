@@ -14,41 +14,30 @@ func _ready():
 #	pass
 
 func create_folders():
-	var dir = Directory.new()
-	if !dir.dir_exists("user://cache"):
-		dir.make_dir("user://cache")
+	var dir = DirAccess.open("user://")
 	if !dir.dir_exists("user://favorites"):
 		dir.make_dir("user://favorites")
 	if !dir.dir_exists("user://database"):
 		dir.make_dir("user://database")
-	if !dir.dir_exists("user://games"):
-		dir.make_dir("user://games")
 	if !dir.dir_exists("user://updates"):
 		dir.make_dir("user://updates")
 		
-func load_thicket():
-	
-	var loaded = ProjectSettings.load_resource_pack("user://updates/Thicket.pck")
+func load_program():
+	var loaded = ProjectSettings.load_resource_pack("user://updates/Qatalyst.pck",true)
 	if loaded:
-		var mw = ResourceLoader.load("res://MainWindow.tscn")
-		var make_window = mw.instance()
-		ProjectSettings.set_setting("display/window/size/height",make_window.HEIGHT)
-		ProjectSettings.set_setting("display/window/size/width",make_window.WIDTH)
-		add_child(make_window)
-		OS.set_window_size(Vector2(make_window.HEIGHT,make_window.WIDTH))
-		OS.set_window_always_on_top(false)
-		OS.set_borderless_window(false)
+		var mw = ResourceLoader.load("res://main.tscn")
+		get_tree().change_scene_to_packed(mw)
+		
 
 func get_update():
-	$HTTPRequest.set_download_file("user://updates/Thicket.pck")
+	$HTTPRequest.set_download_file("user://updates/Qatalyst.pck")
 	var headers = [
 			"User-Agent: Pirulo/1.0 (Godot)",
 			"Accept: */*"
 		]
-	$HTTPRequest.request("http://142.93.27.131:8675/thicket/Thicket.pck",headers,false,HTTPClient.METHOD_GET)
+	$HTTPRequest.request("https://github.com/bflanagin/QAtalyst_distribution/releases/download/alpha/QAtalyst.pck",headers,HTTPClient.METHOD_GET)
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if response_code == 200:
-		load_thicket()
-
+		load_program()

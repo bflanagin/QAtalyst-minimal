@@ -6,30 +6,28 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[  ]
-_global_script_class_icons={
-
-}
+config_version=5
 
 [application]
 
-config/name="Thicket"
+config/name="QAtalyst-launch"
+config/description="QA tool"
 run/main_scene="res://Loader.tscn"
-boot_splash/image="res://icon.png"
-boot_splash/fullsize=false
-config/icon="res://icon.png"
+config/features=PackedStringArray("4.6")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/stretch_mode=3
+boot_splash/image="uid://cm6hcjg7bicag"
+config/icon="uid://cm6hcjg7bicag"
 
 [display]
 
-window/size/width=600
-window/size/height=177
+window/size/viewport_width=600
+window/size/viewport_height=177
 window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
-window/dpi/allow_hidpi=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_clear_color=Color(0.90673673, 0.90673673, 0.90673673, 1)
+environment/defaults/default_environment="res://default_env.tres"
