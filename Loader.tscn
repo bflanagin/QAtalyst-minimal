@@ -94,7 +94,6 @@ alignment = 2
 [node name="Notification" type="Label" parent="Control/Panel/VBoxContainer/Notes" unique_id=960059200]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Downloading"
 uppercase = true
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=348722961]
